@@ -13,6 +13,8 @@ class GeteastbaySpider(scrapy.Spider):
     #一级爬虫
     def parse(self, response):
 
+        item = EastbayItem()
+
         content = response.body
 
         soup = bs4.BeautifulSoup(content, "html.parser")
@@ -22,20 +24,17 @@ class GeteastbaySpider(scrapy.Spider):
         for goods_list in goods_list:
             #url_list.append('https://www.eastbay.com/'+goods_list.find('a')['href'])
 
-            url = 'https://www.eastbay.com/'+goods_list.find('a')['href']
+            item['url'] = 'https://www.eastbay.com/'+goods_list.find('a')['href']
 
-            item = EastbayItem()
-
-            item['url'] = url
-
-            yield scrapy.Request(url=url,callback=self.details,meta={'item':item})
-
-    def details(self,response):
-
-        item = response.meta['item']
-
-        content_list = response.xpath('//span[@class="ProductPrice-final"]/text()')
-
-        print(content_list)
+            yield item
+    #         yield scrapy.Request(url='https://www.eastbay.com/'+goods_list.find('a')['href'],callback=self.details,meta={'item':item})
+    #
+    # def details(self,response):
+    #
+    #     item = response.meta['item']
+    #
+    #     content_list = response.xpath('//span[@class="ProductPrice-final"]/text()')
+    #
+    #     print(content_list)
 
 

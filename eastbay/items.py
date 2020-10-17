@@ -9,3 +9,4 @@ import scrapy
 class EastbayItem(scrapy.Item):
      url = scrapy.Field()
 
+
