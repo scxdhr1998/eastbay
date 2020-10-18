@@ -8,7 +8,6 @@ import scrapy
 
 class EastbayItem(scrapy.Item):
      title = scrapy.Field()
-     url = scrapy.Field()
      img_urls = scrapy.Field()
      price = scrapy.Field()
      size = scrapy.Field()
