@@ -19,12 +19,12 @@ class GeteastbaySpider(scrapy.Spider):
         content = response.body
         soup = bs4.BeautifulSoup(content, "html.parser")
 
+
         goods_list = soup.find_all('li',attrs={'product-container col'})
         #获取二级页面路径赋值给item
         for goods_list in goods_list:
             #获取网页路径
             request = scrapy.Request(url='https://www.eastbay.com/'+goods_list.find('a')['href'],callback=self.details,meta={'item':item})
-
             yield request
 
 

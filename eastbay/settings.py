@@ -22,8 +22,18 @@ ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {
     # 'NovelSpider.pipelines.NovelspiderPipeline': 300,
     'eastbay.pipelines.JsonPipelines': 300,
+    'eastbay.middlewares.MyproxiesSpiderMiddleware': 500
+    # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 542,
+    # 'eastbay.middlewares.MyproxiesSpiderMiddleware': 543,
 }
 
+IPPOOL=[
+    {"ipaddr":"125.107.7.29:16978"},
+    {"ipaddr":"122.230.37.238:20672"},
+    {"ipaddr":"117.27.112.114:21201"},
+    {"ipaddr":"171.15.185.154:17911"},
+    {"ipaddr":"1.197.33.228:21341"}
+]
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
